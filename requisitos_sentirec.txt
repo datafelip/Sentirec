@@ -1,0 +1,58 @@
+
+📄 Requisitos do Projeto: Sistema de Recomendação com Análise de Sentimentos
+
+🎯 Objetivo Geral:
+Desenvolver um sistema de recomendação de produtos com base em avaliações textuais e notas fornecidas por usuários, utilizando análise de sentimentos e técnicas de processamento de linguagem natural (NLP).
+
+📌 Requisitos Funcionais:
+1. Coleta de Dados
+   - Conectar ao banco de dados MySQL.
+   - Obter avaliações com campos: id_usuario, id_produto, texto, nota.
+
+2. Pré-processamento dos Dados
+   - Normalizar o texto: letras minúsculas, remoção de pontuação e símbolos.
+   - Tokenizar e remover stopwords.
+   - Aplicar lematização.
+   - Calcular a polaridade do texto com a biblioteca TextBlob.
+
+3. Geração de Recomendações
+   - Calcular a média ponderada entre nota e polaridade.
+   - Filtrar produtos ainda não avaliados por determinado usuário.
+   - Retornar os produtos com melhores pesos ajustados (nota + polaridade).
+
+4. Interface de Execução
+   - Permitir entrada via terminal do ID do usuário.
+   - Exibir as recomendações com seus respectivos pesos ajustados.
+
+⚙️ Requisitos Não Funcionais:
+- O sistema deve ser implementado em Python 3.
+- Utilizar bibliotecas: nltk, textblob, pandas, mysql-connector-python.
+- O sistema deve funcionar em modo console (linha de comando).
+- Código dividido em módulos: conectar.py, preprocess.py, recomendacoes.py, main.py.
+
+🗃️ Estrutura dos Arquivos:
+sentirec/
+│
+├── src/
+│   ├── conectar.py
+│   ├── preprocess.py
+│   ├── recomendacoes.py
+│   └── main.py
+
+📦 Dependências Python:
+pip install pandas nltk textblob mysql-connector-python
+
+🔧 Pré-requisitos de Ambiente:
+- Banco de dados MySQL configurado com a tabela tbl_avaliacoes.
+- Avaliações com colunas: id_usuario, id_produto, texto, nota.
+
+✅ Exemplo de Uso no Terminal:
+python main.py
+
+Digite o ID do usuário para recomendações: 1
+
+Recomendações:
+Produto 9 (peso ajustado: 6.95)
+Produto 81 (peso ajustado: 6.95)
+...
+
